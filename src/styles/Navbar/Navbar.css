@@ -1,0 +1,82 @@
+nav{
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+    padding: 2vw;
+    position: sticky;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+@media (max-width: 960px) {
+    nav{
+    grid-template-columns: 15% 40% 45%;
+    }
+}
+nav h1{
+    padding: 2vw;
+    padding-left: 3vw;
+}
+nav .nav-left{
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    justify-content: center;
+}
+nav .nav-left ul{
+    display: flex;
+}
+nav .nav-left ul li{
+    list-style: none;
+    padding: 1vw;
+}
+nav .nav-left ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: calc(8px + .7vw);
+}
+nav .nav-right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+nav .nav-right ul{
+    display: flex;
+    align-items: center;
+}
+nav .nav-right ul li{
+ list-style: none;
+ padding: 1vw;
+}
+
+
+/******Search Bar*********/
+
+form {
+    display:flex;
+    flex-direction:row;
+    border:none;
+    padding:1px;
+  }
+  
+  input {
+    flex-grow:2;
+    border:none;
+    background-color: #F5F5F5;
+    text-indent: 1vw;
+
+  }
+  input:focus {
+    outline: none;
+  }
+  form:focus-within { 
+    outline: 1px solid rgb(0, 0, 0) 
+  }
+  
+  button {
+    background:none;
+    border: none;
+    color:white;
+    background-color: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5vw;
+  }
