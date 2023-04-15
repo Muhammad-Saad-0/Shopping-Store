@@ -2,8 +2,11 @@ nav{
     display: grid;
     grid-template-columns: 20% 40% 40%;
     padding: 0vw;
-    position: sticky;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    position: fixed;
+    z-index: 5;
+    background-color: white;
+    width: 100%;
+    box-shadow: rgba(99, 99, 99, 0.527) 0px 2px 8px 0px;
 }
 @media (max-width: 960px) {
     nav{

@@ -1,0 +1,83 @@
+* {
+  /* border: 1px green solid; */
+}
+
+.categories-section {
+  width: 80vw;
+  transform: translate(10vw, 8vw);
+  margin-top: 4vw;
+}
+.categories-section>div:nth-child(1){
+display: flex;
+justify-content: space-between;
+}
+.categories-section div:nth-child(1) span{
+display: flex;
+gap: 1vw;
+}
+.categories-section div:nth-child(1) span button{
+all: unset;
+}
+.categories-section div:nth-child(1) span button:nth-child(1) img{
+transform: rotate(180deg);
+}
+
+.categories-section h3 {
+  font-size: calc(16px + 1vw);
+  margin-bottom: 2vw;
+  color: #db4444;
+}
+.categories-flex {
+  display: flex;
+  justify-content: space-between;
+  gap: 1vw;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+.categories-flex div {
+  border: 1px grey solid;
+  padding: 3vw;
+  border-radius: 0.3vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 5.5vw;
+  min-width: 7.5vw;
+  position: relative;
+}
+.categories-flex div p {
+  font-size: 1.4vw;
+  margin-top: 7vw;
+}
+.categories-flex div span {
+  height: 11.5vw;
+  min-width: 13.5vw;
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: rgb(44, 44, 44);
+}
+.categories-flex div span:hover {
+  color: rgb(255, 255, 255);
+}
+.categories-flex div span .icon {
+  font-size: 5vw;
+  margin-top: 2vw;
+}
+.categories-flex div:hover,
+.categories-flex div:focus,
+.categories-flex div:active {
+  cursor: pointer;
+  background-color: #db4444;
+  color: white !important;
+}
+.categories-flex div span:hover,
+.categories-flex div span:focus,
+.categories-flex div span:active {
+  cursor: pointer;
+  color: white !important;
+}

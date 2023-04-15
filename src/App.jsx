@@ -1,10 +1,10 @@
 import React from 'react'
-import Hero from './Pages/Hero'
+import Home from './Pages/Home'
 
 const App = () => {
   return (
   <>
-  <Hero />
+  <Home />
   </>
   )
 }

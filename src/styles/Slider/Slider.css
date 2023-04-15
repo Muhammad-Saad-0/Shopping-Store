@@ -6,6 +6,7 @@
   -ms-flex-align: center;
   align-items: center;
   position: relative;
+  transform: translateY(6.7vw);
 }
 .react-slideshow-container .nav {
   z-index: 10;
@@ -35,10 +36,12 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  background: #fffefe83;
+
 }
 .react-slideshow-container .default-nav:hover,
 .react-slideshow-container .default-nav:focus {
-  background: #fffefe83;
+  background: #fffefe56;
   color: #c2c2c2;
   outline: 0;
 }
@@ -63,6 +66,8 @@
   -ms-flex-pack: center;
   justify-content: center;
   margin-top: 20px;
+  transform: translateY(6.7vw);
+
 }
 .react-slideshow-container + ul.indicators li {
   display: inline-block;
