@@ -7,6 +7,7 @@
   align-items: center;
   position: relative;
   transform: translateY(6.7vw);
+  /* height: 35vw; */
 }
 .react-slideshow-container .nav {
   z-index: 10;

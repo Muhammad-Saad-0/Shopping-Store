@@ -1,3 +1,6 @@
+*{
+    /* border: 1px green solid; */
+}
 nav{
     display: grid;
     grid-template-columns: 20% 40% 40%;
@@ -7,6 +10,7 @@ nav{
     background-color: white;
     width: 100%;
     box-shadow: rgba(99, 99, 99, 0.527) 0px 2px 8px 0px;
+    min-height: 6.7vw;
 }
 @media (max-width: 960px) {
     nav{
@@ -64,7 +68,7 @@ form {
     border:none;
     background-color: #F5F5F5;
     text-indent: 1vw;
-
+    min-width: calc(16px + 15rem) ;
   }
   input:focus {
     outline: none;

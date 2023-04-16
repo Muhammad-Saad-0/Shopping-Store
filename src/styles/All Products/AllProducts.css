@@ -1,0 +1,9 @@
+.all-products-section {
+    width: 80vw;
+    transform: translate(10vw, 8vw);
+  }
+  .all-products-section h3 {
+    font-size: calc(16px + 1vw);
+    margin-bottom: 2vw;
+    color: #db4444;
+  }

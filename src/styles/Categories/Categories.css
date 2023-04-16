@@ -41,6 +41,9 @@ transform: rotate(180deg);
   scrollbar-width: none;
   scroll-behavior: smooth;
 }
+.categories-flex::-webkit-scrollbar {
+  display: none;
+}
 .categories-flex div {
   border: 1px grey solid;
   padding: calc(16px + 2.5vw
@@ -55,11 +58,11 @@ transform: rotate(180deg);
   min-width: calc(16px + 5.5rem
   );
   position: relative;
-}
+  }
 .categories-flex div p {
   font-size: calc(16px + .3vw
   );
-  margin-top: 7vw;
+  margin-top: 7rem;
 }
 .categories-flex div span {
   height: calc(16px + 10.5vw
@@ -78,7 +81,7 @@ transform: rotate(180deg);
 .categories-flex div span .icon {
   font-size:calc(16px + 3rem
   );
-  margin-top: 2vw;
+  margin-top: 3vw;
 }
 .categories-flex div:hover,
 .categories-flex div:focus,
