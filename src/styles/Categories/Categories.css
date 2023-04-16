@@ -18,6 +18,11 @@ gap: 1vw;
 .categories-section div:nth-child(1) span button{
 all: unset;
 }
+.categories-section div:nth-child(1) span button img:hover,
+.categories-section div:nth-child(1) span button img:active,
+.categories-section div:nth-child(1) span button img:focus{
+  cursor: pointer;
+}
 .categories-section div:nth-child(1) span button:nth-child(1) img{
 transform: rotate(180deg);
 }
@@ -38,23 +43,29 @@ transform: rotate(180deg);
 }
 .categories-flex div {
   border: 1px grey solid;
-  padding: 3vw;
+  padding: calc(16px + 2.5vw
+  );;
   border-radius: 0.3vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 5.5vw;
-  min-width: 7.5vw;
+  height:calc(16px + 5rem
+  );
+  min-width: calc(16px + 5.5rem
+  );
   position: relative;
 }
 .categories-flex div p {
-  font-size: 1.4vw;
+  font-size: calc(16px + .3vw
+  );
   margin-top: 7vw;
 }
 .categories-flex div span {
-  height: 11.5vw;
-  min-width: 13.5vw;
+  height: calc(16px + 10.5vw
+  );
+  min-width: calc(16px + 13.5vw
+  );
   position: absolute;
   display: flex;
   align-items: flex-start;
@@ -65,7 +76,8 @@ transform: rotate(180deg);
   color: rgb(255, 255, 255);
 }
 .categories-flex div span .icon {
-  font-size: 5vw;
+  font-size:calc(16px + 3rem
+  );
   margin-top: 2vw;
 }
 .categories-flex div:hover,
