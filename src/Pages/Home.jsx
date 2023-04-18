@@ -5,6 +5,8 @@ import Slider from "../Components/Slider/Slider";
 import Categories from "../Components/Categories/Categories";
 import Sale from "../Components/Sale/Sale";
 import AllProducts from "../Components/All Products/AllProducts";
+import Services from "../Components/Services/Services";
+import Footer from "../Components/Footer/Footer";
 const Hero = () => {
   return (
     <>
@@ -13,6 +15,8 @@ const Hero = () => {
       <Categories />
       <Sale />
       <AllProducts />
+      <Services />
+      <Footer />
     </>
   );
 };
