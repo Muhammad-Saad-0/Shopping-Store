@@ -10,7 +10,6 @@ import Footer from "../Components/Footer/Footer";
 const Hero = () => {
   return (
     <>
-      <NavBar />
       <Slider />
       <Categories />
       <Sale />

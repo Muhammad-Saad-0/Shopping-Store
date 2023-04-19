@@ -4,6 +4,7 @@
 .services-section {
     position: relative;
     border: 1px rgba(44, 219, 44, 0) solid;
+    margin-top: 13vw;
 
 }
 .services-section button{
@@ -22,14 +23,14 @@
 .services-grid{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    margin-top: 15vw;
+    margin-top: 5vw;
     width: 80vw;
     transform: translateX(10vw);
     margin-bottom: 7vw;
 }
 .services-grid img{
  background-color: black;
- border: 10px solid #a8a8a8;
+ /* border: 10px solid #a8a8a8; */
  border-radius: 50%;
  padding: .4vw;
 }

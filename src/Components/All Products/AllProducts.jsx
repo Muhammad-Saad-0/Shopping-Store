@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "../../styles/Categories/Categories.css";
 import "../../styles/All Products/AllProducts.css";
 import { AiFillStar } from "react-icons/ai";
+import { Link } from "react-router-dom";
 const AllProducts = () => {
   const [productsData, setProductsData] = useState([]);
 
@@ -53,8 +54,7 @@ const AllProducts = () => {
               );
             })}
         </div>
-        <button className="btn">View All Products</button>
-
+        <Link to='/products' className="all-btn">View All Products</Link>
       </section>
 
     </>

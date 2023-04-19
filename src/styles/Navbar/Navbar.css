@@ -2,8 +2,8 @@
     /* border: 1px green solid; */
 }
 nav{
-    display: grid;
-    grid-template-columns: 20% 40% 40%;
+    display: flex;
+    /* grid-template-columns: 20% 40% 40%; */
     padding: 0vw;
     position: fixed;
     z-index: 5;
@@ -11,12 +11,19 @@ nav{
     width: 100%;
     box-shadow: rgba(99, 99, 99, 0.527) 0px 2px 8px 0px;
     min-height: 6.7vw;
+    /* gap:calc(16px + 12vw); */
+    justify-content: space-between;
 }
-@media (max-width: 960px) {
+/* @media (max-width: 960px) {
     nav{
     grid-template-columns: 15% 40% 45%;
     }
 }
+@media (max-width: 800px) {
+    nav{
+    grid-template-columns: 15% 30% 55%;
+    }
+} */
 nav h1{
     padding: 2vw;
     padding-left: 3vw;
