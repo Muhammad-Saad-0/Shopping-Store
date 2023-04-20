@@ -3,7 +3,7 @@ import Home from './Pages/Home'
 import { Route, Routes, useParams } from "react-router";
 import AllProducts from "./Pages/AllProducts";
 import NavBar from "./Components/NavBar/NavBar";
-import SingleProduct from './Pages/SingleProduct';
+import SingleCategory from './Pages/SingleCategory';
 
 const App = () => {
  
@@ -14,7 +14,7 @@ const App = () => {
    <Routes>
       <Route path="/products" element={<AllProducts />} />
       <Route path="/" element={<Home />} />
-      <Route path="/products/category/:categoryId" element={<SingleProduct />} />
+      <Route path="/products/category/:categoryId" element={<SingleCategory />} />
     </Routes>
   </>
   )

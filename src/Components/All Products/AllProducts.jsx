@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../../styles/Categories/Categories.css";
-import "../../styles/All Products/AllProducts.css";
+import "../../styles/Products/Products.css";
 import { AiFillStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
 const AllProducts = () => {

@@ -27,11 +27,11 @@ const Categories = [
         Icon:  FaAppleAlt
       },
       {
-        name: "Dresses",
+        name: "Womens-Dresses",
         Icon:  GiLargeDress
       },
       {
-        name: "Shirts",
+        name: "Mens-Shirts",
         Icon: IoIosShirt
       },
       {

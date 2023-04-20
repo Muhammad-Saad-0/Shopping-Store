@@ -64,6 +64,9 @@ transform: rotate(180deg);
   font-size: calc(16px + .3vw
   );
   margin-top: 7rem;
+  min-width: calc(16px + 11rem
+  );
+  text-align: center;
 }
 
 .categories-flex a span {
