@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import categories from "../../Data/Categories";
 import "../../styles/Categories/Categories.css";
 import RightArrow from '../../assets/icons/RightArrow.svg'
+import { Link } from "react-router-dom";
 const Categories = () => {
   const ref = useRef(null);
   const scroll = (scrollOffset) => {
@@ -25,12 +26,12 @@ const Categories = () => {
         <div className="categories-flex" ref={ref}>
           {categories.map(({ name, Icon }) => {
             return (
-              <div>
+              <Link to={`products/category/${name}`} style={{textDecoration:"none"}}>
                 <span>
                   <Icon className="icon" />
                 </span>
                 <p>{name}</p>
-              </div>
+              </Link>
             );
           })}
         </div>

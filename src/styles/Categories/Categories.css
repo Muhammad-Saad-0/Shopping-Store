@@ -44,7 +44,7 @@ transform: rotate(180deg);
 .categories-flex::-webkit-scrollbar {
   display: none;
 }
-.categories-flex div {
+.categories-flex a{
   border: 1px grey solid;
   padding: calc(16px + 2.5vw
   );;
@@ -58,14 +58,16 @@ transform: rotate(180deg);
   min-width: calc(16px + 5.5rem
   );
   position: relative;
+  color: black;
   }
-.categories-flex div p {
+.categories-flex a p {
   font-size: calc(16px + .3vw
   );
   margin-top: 7rem;
 }
-.categories-flex div span {
-  height: calc(16px + 10.5vw
+
+.categories-flex a span {
+  height: calc(16px + 13.5vw
   );
   min-width: calc(16px + 13.5vw
   );
@@ -75,24 +77,24 @@ transform: rotate(180deg);
   justify-content: center;
   color: rgb(44, 44, 44);
 }
-.categories-flex div span:hover {
+.categories-flex a span:hover {
   color: rgb(255, 255, 255);
 }
-.categories-flex div span .icon {
+.categories-flex a span .icon {
   font-size:calc(16px + 3rem
   );
   margin-top: 3vw;
 }
-.categories-flex div:hover,
-.categories-flex div:focus,
-.categories-flex div:active {
+.categories-flex a:hover,
+.categories-flex a:focus,
+.categories-flex a:active {
   cursor: pointer;
   background-color: #db4444;
   color: white !important;
 }
-.categories-flex div span:hover,
-.categories-flex div span:focus,
-.categories-flex div span:active {
+.categories-flex a span:hover,
+.categories-flex a span:focus,
+.categories-flex a span:active {
   cursor: pointer;
   color: white !important;
 }

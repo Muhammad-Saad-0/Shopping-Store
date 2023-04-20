@@ -15,7 +15,10 @@ const AllProducts = () => {
       });
   };
   useEffect(() => {
-    fetchProducts();
+    setTimeout(()=>{
+      fetchProducts();
+
+    },1000)
     console.log(productsData);
   }, []);
   return (
@@ -23,6 +26,7 @@ const AllProducts = () => {
     <div>
       <h3>Explore Our Products</h3>
     </div>
+    <span class="loader"></span>
     <div className="products-grid">
       {productsData.map(({ brand, id, images, title, price, rating }) => {
           return (
