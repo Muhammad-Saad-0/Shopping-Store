@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import "../styles/Products/SingleProduct.css";
+import { AiFillStar } from "react-icons/ai";
 const SingleProduct = () => {
   const [productsData, setProductsData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,7 +23,7 @@ const SingleProduct = () => {
   return (
     <>
       {loading ? <span className="loader"></span> : 
-      <section>
+      <section className="single-product">
         {productsData.map((product)=>{
           return (
             <>
@@ -32,9 +33,23 @@ const SingleProduct = () => {
             <div className="details">
               <div className="details-top">
                 <p>{product.title}</p>
-                <p>{product.rating}</p>
-                <p>{product.stock > 0 ? 'In Stock':'Out of Stock'}</p>
-                <p>{product.price}</p>
+                <div  className="ratings">
+                        {[1, 2, 3, 4, 5].map((r) => {
+                          return (
+                            <span>
+                              {r <= Math.round(product.rating) ? (
+                                <AiFillStar style={{ color: "#FFDF00" }} />
+                              ) : (
+                                <AiFillStar style={{ color: "grey" }} />
+                              )}
+                            </span>
+                          );
+                        })}
+                        <p>{`(${Math.round(product.rating)})`}</p>
+                        <p className="stock" style={{color:product.stock > 0 ? 'green':'red'}}>{product.stock > 0 ? 'In Stock':'Out of Stock'}</p>
+                      </div>
+            
+                <p>${product.price}.00</p>
                 <p>{product.description}</p>
               </div>
             </div>

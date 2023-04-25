@@ -26,7 +26,7 @@
  background-color: #f35353;
  cursor: pointer;
 }
-/* .all-products-section a{
+.all-products-section .all-btn{
   width: 20vw;
   background-color: #db4444;
   text-align: center;
@@ -38,10 +38,10 @@
   text-decoration: none;
   color: white;
 }
-.all-products-section a:hover{
+.all-products-section .all-btn:hover{
   background-color: #f35353;
  cursor: pointer;
-} */
+}
 .all-products-section h3 {
   font-size: calc(16px + 1vw);
   margin-bottom: 2vw;

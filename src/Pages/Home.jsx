@@ -4,7 +4,7 @@ import "../styles/Navbar/Navbar.css";
 import Slider from "../Components/Slider/Slider";
 import Categories from "../Components/Categories/Categories";
 import Sale from "../Components/Sale/Sale";
-import AllProducts from "../Components/All Products/AllProducts";
+import AllProducts from "../Components/Explore Products/ExploreProducts";
 import Services from "../Components/Services/Services";
 import Footer from "../Components/Footer/Footer";
 const Hero = () => {

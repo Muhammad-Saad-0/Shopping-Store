@@ -36,7 +36,7 @@ const AllProducts = () => {
             <h3>Explore Our Products</h3>
           </div>
           <div className="products-grid">
-            {productsData.map(({ brand, id, images, title, price, rating }) => {
+            {productsData.map(({id, images, title, price, rating }) => {
               return (
                 <Link to={`product/${id}`} key={id}>
                   <img src={images[3] ? images[3] : images[0]} alt={title} />
