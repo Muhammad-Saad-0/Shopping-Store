@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { AiFillStar } from "react-icons/ai";
 import "../styles/Products/Products.css";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 const SingleProducts = () => {
   const { categoryId } = useParams();
   const [productsData, setProductsData] = useState([]);
@@ -43,7 +44,7 @@ const SingleProducts = () => {
           <div className="products-grid">
             {productsData.map(({ brand, id, images, title, price, rating }) => {
               return (
-                <div key={id}>
+                <Link to={`/products/product/${id}`} key={id}>
                   <img src={images[3] ? images[3] : images[0]} alt={title} />
                   <span className="products-info-container">
                     <p>
@@ -51,9 +52,10 @@ const SingleProducts = () => {
                     </p>
                     <span className="products-detail">
                       <p>${price}</p>
+                      <div className="ratings">
                       {[1, 2, 3, 4, 5].map((r) => {
                         return (
-                          <span className="ratings">
+                          <span>
                             {r <= Math.round(rating) ? (
                               <AiFillStar style={{ color: "#FFDF00" }} />
                             ) : (
@@ -63,9 +65,12 @@ const SingleProducts = () => {
                         );
                       })}
                       <p>{`(${Math.round(rating)})`}</p>
+
+                      </div>
+                   
                     </span>
                   </span>
-                </div>
+                </Link>
               );
             })}
           </div>

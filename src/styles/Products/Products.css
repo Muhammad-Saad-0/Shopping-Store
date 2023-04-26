@@ -106,7 +106,7 @@
   padding-left: 1vw;
   line-break: strict;
 }
-.products-grid .products-info-container .ratings{
+.products-grid .products-info-container .products-detail .ratings{
   width: 100%;
   text-indent: 0vw;
   display: flex;

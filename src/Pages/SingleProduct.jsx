@@ -7,7 +7,7 @@ const SingleProduct = () => {
   const [loading, setLoading] = useState(true);
   const { productId } = useParams();
   const fetchProducts = () => {
-    fetch(`https://dummyjson.com/products/1`)
+    fetch(`https://dummyjson.com/products/${productId}`)
       .then((response) => {
         return response.json();
       })
