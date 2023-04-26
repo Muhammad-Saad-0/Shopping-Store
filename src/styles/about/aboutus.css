@@ -1,0 +1,26 @@
+* {
+  /* border: 1px green solid; */
+}
+.about-section {
+  padding-top: 10vw;
+  transform: translateX(10%);
+  /* display: grid;
+    grid-template-columns: repeat(2,50%); */
+  display: flex;
+  align-items: center;
+}
+.about-right {
+  overflow: hidden;
+}
+.about-left {
+  width: 40%;
+  padding-right: 4vw;
+}
+.about-left p:nth-child(1) {
+  font-size:3rem;
+  font-weight: 500;
+}
+.about-footer {
+  /* position: absolute; */
+  bottom: 0;
+}

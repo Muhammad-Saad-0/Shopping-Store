@@ -3,18 +3,20 @@ import SearchBar from "./SearchBar";
 import Cart1 from "../../assets/icons/Cart1.svg";
 import heartSmall from "../../assets/icons/heart small.svg";
 import "../../styles/NavBar/Navbar.css";
+import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <nav>
-      <h1>Exclusive</h1>
+      <Link to="/" style={{color:"black",textDecoration:"none"}}>
+      <h1>Exclusive</h1></Link>
 
       <div className="nav-left">
         <ul>
           <li>
-            <a href="#">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="#">About Us</a>
+            <Link to="/about" href="#">About Us</Link>
           </li>
           <li>
             <a href="#">Sign Up</a>

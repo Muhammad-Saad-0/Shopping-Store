@@ -48,7 +48,7 @@ const SingleProducts = () => {
                   <img src={images[3] ? images[3] : images[0]} alt={title} />
                   <span className="products-info-container">
                     <p>
-                      {title.length > 30 ? `${title.slice(0, 30)}...` : title}
+                    {title.length > 19 ? `${title.slice(0, 19)}...` : title}
                     </p>
                     <span className="products-detail">
                       <p>${price}</p>

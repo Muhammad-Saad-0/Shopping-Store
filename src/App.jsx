@@ -5,6 +5,7 @@ import AllProducts from "./Pages/AllProducts";
 import NavBar from "./Components/NavBar/NavBar";
 import SingleCategory from './Pages/SingleCategory';
 import SingleProduct from './Pages/SingleProduct';
+import AboutUs from './Pages/AboutUs';
 
 const App = () => {
  
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/products/category/:categoryId" element={<SingleCategory />} />
       <Route path="/products/product/:productId" element={<SingleProduct />} />
+      <Route path='/about' element={<AboutUs />} />
     </Routes>
   </>
   )

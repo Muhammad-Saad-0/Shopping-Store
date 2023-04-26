@@ -7,7 +7,10 @@
     background-color: black;
     color: white;
     margin-top: 5vw;
+    position: relative;
+    bottom: 0;
 }
+
 .footer-grid div{
     display: flex;
     flex-direction: column;
