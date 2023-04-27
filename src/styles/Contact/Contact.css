@@ -1,0 +1,42 @@
+*{
+    /* border: 1px green solid; */
+}
+.contact-section{
+transform: translate(15vw,10vw);
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+width: 70vw;
+padding: 2vw;
+border-radius: .5vw;
+display: flex;
+flex-direction: column;
+gap: 2vw;
+}
+.contact-section .section-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+}
+.contact-section .section-top input{
+padding: .5vw;
+font-size: 1.2vw;
+    border-radius: .5vw;
+}
+.contact-section .section-bottom textarea{
+    padding: 1vw;
+    border-radius: .5vw;
+    height: 24vw;
+    width: 97%;
+    border: none;
+    background-color: #F5F5F5;
+    outline: none;
+    resize: none;
+}
+.contact-section button{
+    background-color:#db4444;
+    color: white;
+    align-self: flex-end;
+    padding: 1vw;
+    width: 15vw;
+    border-radius: .5vw;
+}

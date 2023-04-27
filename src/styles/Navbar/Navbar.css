@@ -5,7 +5,7 @@ nav{
     display: flex;
     /* grid-template-columns: 20% 40% 40%; */
     padding: 0vw;
-    position: fixed;
+    position: -webkit-sticky;
     z-index: 5;
     background-color: white;
     width: 100%;
@@ -54,10 +54,15 @@ nav .nav-right{
 nav .nav-right ul{
     display: flex;
     align-items: center;
+    justify-content: center;
+    padding-right: 1rem;
 }
 nav .nav-right ul li{
  list-style: none;
- padding: 1vw;
+ padding: .3rem;
+}
+nav .nav-right ul li a img{
+    height:1.6rem;
 }
 
 

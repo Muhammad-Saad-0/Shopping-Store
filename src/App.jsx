@@ -6,6 +6,7 @@ import NavBar from "./Components/NavBar/NavBar";
 import SingleCategory from './Pages/SingleCategory';
 import SingleProduct from './Pages/SingleProduct';
 import AboutUs from './Pages/AboutUs';
+import Contact from './Pages/Contact';
 
 const App = () => {
  
@@ -19,6 +20,7 @@ const App = () => {
       <Route path="/products/category/:categoryId" element={<SingleCategory />} />
       <Route path="/products/product/:productId" element={<SingleProduct />} />
       <Route path='/about' element={<AboutUs />} />
+      <Route path='/contact' element={<Contact />} />
     </Routes>
   </>
   )

@@ -2,6 +2,7 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import Cart1 from "../../assets/icons/Cart1.svg";
 import heartSmall from "../../assets/icons/heart small.svg";
+import userIcon from "../../assets/icons/user.svg"
 import "../../styles/NavBar/Navbar.css";
 import { Link } from "react-router-dom";
 const NavBar = () => {
@@ -19,7 +20,7 @@ const NavBar = () => {
             <Link to="/about" href="#">About Us</Link>
           </li>
           <li>
-            <a href="#">Sign Up</a>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </div>
@@ -34,6 +35,11 @@ const NavBar = () => {
           <li>
             <a href="#">
               <img src={heartSmall} alt="wishlist" />
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src={userIcon} alt="profile" />
             </a>
           </li>
         </ul>

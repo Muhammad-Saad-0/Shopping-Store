@@ -26,7 +26,7 @@ const Categories = () => {
         <div className="categories-flex" ref={ref}>
           {categories.map(({ name, Icon }) => {
             return (
-              <Link to={`products/category/${name}`} style={{textDecoration:"none"}}>
+              <Link to={`products/category/${name}`} key={name} style={{textDecoration:"none"}}>
                 <span>
                   <Icon className="icon" />
                 </span>
