@@ -1,52 +1,43 @@
-.signin-section{
+.login-section{
     display: flex;
     padding-top: 10vw;
     /* padding-right: 25vw; */
     justify-content: space-between;
     align-items: center;
 }
-.signin-section img{
+.login-section img{
     max-height:50vw;
 }
-.signin-right-section{
+.login-right-section{
     margin-left: 5vw;
     display: flex;
     flex-direction: column;
     gap: 1vw;
     padding-right: 10vw;
 }
-.signin-right-section>p:nth-child(1){
+.login-right-section>p:nth-child(1){
     font-size: 2rem;
 }
-.signin-inputs{
+.login-inputs{
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     margin-top: 2vw;
 
 }
-.signin-inputs input{
+.login-inputs input{
     all: unset;
     border-bottom: 2px solid rgb(187, 187, 187);
 }
-.signin-section button{
+.login-section button{
     background-color:#db4444;
     padding: 1rem;
     font-size: 1.2vw;
     margin-top: 2vw;
+    cursor: pointer;
     border-radius: .2vw;
 }
-.signin-section button:hover{
-  background-color: #f35353;
-  cursor: pointer;
-}
-.bottom-signin{
-    display: flex;
-    gap: 1vw;
-}
-.bottom-signin a{
-   all: unset;
-   text-decoration: underline;
-   color: rgb(109, 109, 109);
-   cursor: pointer;
+.login-section button:hover{
+    background-color: #f35353;
+
 }

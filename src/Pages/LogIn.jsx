@@ -1,25 +1,20 @@
 import React from 'react'
 import SideImage from '../assets/icons/dl.beatsnoop 1.png'
 import { Link } from 'react-router-dom'
-import '../styles/Register/SignIn.css'
+import '../styles/Register/login.css'
 const LogIn = () => {
   return (
     <>
-    <section className='signin-section'>
+    <section className='login-section'>
     <img src={SideImage} alt="" />
-<section className='signin-right-section'>
-    <p>Create an account</p>
+<section className='login-right-section'>
+    <p>Log in to Exclusive</p>
     <p>Enter your details below</p>
-    <div className="signin-inputs">
-        <input type="text" placeholder='Name' />
+    <div className="login-inputs">
         <input type="email" placeholder='Email' />
         <input type="password" placeholder='Password' />
     </div>
-    <button>Create Account</button>
-    <div className="bottom-signin">
-        <p>Already have account?</p>
-        <Link to='/login'>Log in</Link>
-    </div>
+    <button>Log in</button>
 </section>
     </section>
     </>
