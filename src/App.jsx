@@ -9,8 +9,9 @@ import AboutUs from './Pages/AboutUs';
 import Contact from './Pages/Contact';
 import SignIn from './Pages/SignIn';
 import LogIn from './Pages/LogIn';
+
 const App = () => {
- 
+
   return (
   <>
       <NavBar />
