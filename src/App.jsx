@@ -7,7 +7,7 @@ import SingleCategory from './Pages/SingleCategory';
 import SingleProduct from './Pages/SingleProduct';
 import AboutUs from './Pages/AboutUs';
 import Contact from './Pages/Contact';
-import SignIn from './Pages/SignIn';
+import SignUp from './Pages/SignUp';
 import LogIn from './Pages/LogIn';
 
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
       <Route path="/products/product/:productId" element={<SingleProduct />} />
       <Route path='/about' element={<AboutUs />} />
       <Route path='/contact' element={<Contact />} />
-      <Route path='/signin' element={<SignIn />} />
+      <Route path='/signup' element={<SignUp />} />
       <Route path='/login' element={<LogIn />} />
     </Routes>
   </>

@@ -38,7 +38,7 @@ const NavBar = () => {
             </a>
           </li>
           <li>
-            <Link to="/signin">
+            <Link to="/signup">
               <img src={userIcon} alt="profile" />
             </Link>
           </li>
