@@ -7,11 +7,13 @@ import heart from "../../assets/icons/Fill Heart.svg";
 import deleteIcon from "../../assets/icons/Frame 568.svg";
 import { v4 as uuidv4 } from "uuid";
 import { doc, setDoc } from "firebase/firestore";
-import { db,auth } from '../../Data/firebase'
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db, auth } from "../../Data/firebase";
 const AllProducts = () => {
   const [productsData, setProductsData] = useState([]);
   const [inWishlist, setInWishlist] = useState(false);
   const [clickedIDs, setClickedIDs] = useState([]);
+  const [prodID, setProdID] = useState("");
 
   const fetchProducts = () => {
     fetch("https://dummyjson.com/products")
@@ -25,41 +27,62 @@ const AllProducts = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
-  const handleWishlist = async ( id, images, title, price, rating )=>{
-    await setDoc(doc(db, "WishList",`Product ${id}`), {
-      uid: auth.currentUser.uid,
-      productId:id,
-       images: images,
-        title : title,
-         price:price, 
-         rating: rating, 
+  useEffect(() => {
+    auth.onAuthStateChanged(function (user) {
+      if (user) {
+        const checkWishlist = async () => {
+          let user = auth.currentUser;
+          const q = query(
+            collection(db, "WishList"),
+            where("uid", "==", user.uid)
+          );
+          const querySnapshot = await getDocs(q);
+          querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+          });
+          checkWishlist();
+        };
+      } else {
+        return false;
+      }
     });
-  }
-//   useEffect(() => {
-//     console.log(clickedIDs);
-//   }, [clickedIDs]);
-//   useEffect(() => {
-//     const handleIcon = (id)=>{   if (clickedIDs.includes(id)) {
-//       return (
-//         <img
-//           className="wishlist-icon"
-//           src={deleteIcon}
-//           alt=""
-//         />
-//       );
-//     }
-//     if (!clickedIDs.includes(id)) {
-//       return (
-//         <img className="wishlist-icon" src={heart} alt="" />
-//       );
-//     }
-//     if ((clickedIDs.length = 0)) {
-//       return (
-//         <img className="wishlist-icon" src={heart} alt="" />
-//       );
-//     }}
-//  handleIcon()
-//   }, [clickedIDs]);
+  }, []);
+  const addToWishlist = async (id, images, title, price, rating) => {
+    await setDoc(doc(db, "WishList", `Product ${id}`), {
+      uid: auth.currentUser.uid,
+      productId: id,
+      images: images,
+      title: title,
+      price: price,
+      rating: rating,
+    });
+  };
+  //   useEffect(() => {
+  //     console.log(clickedIDs);
+  //   }, [clickedIDs]);
+  //   useEffect(() => {
+  //     const handleIcon = (id)=>{   if (clickedIDs.includes(id)) {
+  //       return (
+  //         <img
+  //           className="wishlist-icon"
+  //           src={deleteIcon}
+  //           alt=""
+  //         />
+  //       );
+  //     }
+  //     if (!clickedIDs.includes(id)) {
+  //       return (
+  //         <img className="wishlist-icon" src={heart} alt="" />
+  //       );
+  //     }
+  //     if ((clickedIDs.length = 0)) {
+  //       return (
+  //         <img className="wishlist-icon" src={heart} alt="" />
+  //       );
+  //     }}
+  //  handleIcon()
+  //   }, [clickedIDs]);
   const idRef = useRef();
   return (
     <>
@@ -72,32 +95,39 @@ const AllProducts = () => {
             .slice(0, 8)
             .map(({ id, images, title, price, rating }) => {
               return (
-                <Link key={id} to={`products/product/${id}`}>
+                <Link id={id} key={id} to={`products/product/${id}`}>
                   <div className="image-section">
                     <img src={images[3] ? images[3] : images[0]} alt={title} />
-                    <button
-                      id={id}
-                      onClick={(e) => {
-                        handleWishlist( id, images, title, price, rating )
-                        // if (!clickedIDs.includes(e.currentTarget.id)) {
-                        // setClickedIDs([...clickedIDs, e.currentTarget.id]);
-                        // }
-                        e.stopPropagation();
-                        e.preventDefault();
-                        setInWishlist(!inWishlist);
-                      }}
-                    > 
-                    {inWishlist?  <img
-         className="wishlist-icon"
-       src={deleteIcon}
-        alt=""
-       />:  <img
-               className="wishlist-icon"
-               src={heart}
-               alt=""
-            />}
-                    </button>
-                    
+                    {inWishlist ? (
+                      <button
+                        id={id}
+                        onClick={(e) => {
+                          handleWishlist(id, images, title, price, rating);
+                          e.stopPropagation();
+                          e.preventDefault();
+                        }}
+                      >
+                        <img
+                          className="wishlist-icon"
+                          src={deleteIcon}
+                          alt=""
+                        />
+                        {/* ) : (
+                        <img className="wishlist-icon" src={heart} alt="" />
+                      )} */}
+                      </button>
+                    ) : (
+                      <button
+                        id={id}
+                        onClick={(e) => {
+                          addToWishlist(id, images, title, price, rating);
+                          e.stopPropagation();
+                          e.preventDefault();
+                        }}
+                      >
+                        <img className="wishlist-icon" src={heart} alt="" />
+                      </button>
+                    )}
                   </div>
 
                   <span className="products-info-container">
