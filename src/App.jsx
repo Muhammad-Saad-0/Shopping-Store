@@ -9,6 +9,7 @@ import AboutUs from './Pages/AboutUs';
 import Contact from './Pages/Contact';
 import SignUp from './Pages/SignUp';
 import LogIn from './Pages/LogIn';
+import WishList from './Pages/WishList';
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
       <Route path='/contact' element={<Contact />} />
       <Route path='/signup' element={<SignUp />} />
       <Route path='/login' element={<LogIn />} />
+      <Route path='/wishlist' element={<WishList />} />
     </Routes>
   </>
   )

@@ -33,9 +33,9 @@ const NavBar = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <Link to="/wishlist">
               <img src={heartSmall} alt="wishlist" />
-            </a>
+            </Link>
           </li>
           <li>
             <Link to="/signup">

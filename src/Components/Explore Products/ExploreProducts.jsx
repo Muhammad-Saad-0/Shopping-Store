@@ -6,10 +6,13 @@ import { Link } from "react-router-dom";
 import heart from "../../assets/icons/Fill Heart.svg";
 import deleteIcon from "../../assets/icons/Frame 568.svg";
 import { v4 as uuidv4 } from "uuid";
+import { doc, setDoc } from "firebase/firestore";
+import { db,auth } from '../../Data/firebase'
 const AllProducts = () => {
   const [productsData, setProductsData] = useState([]);
   const [inWishlist, setInWishlist] = useState(false);
   const [clickedIDs, setClickedIDs] = useState([]);
+
   const fetchProducts = () => {
     fetch("https://dummyjson.com/products")
       .then((response) => {
@@ -22,6 +25,16 @@ const AllProducts = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
+  const handleWishlist = async ( id, images, title, price, rating )=>{
+    await setDoc(doc(db, "WishList",`Product ${id}`), {
+      uid: auth.currentUser.uid,
+      productId:id,
+       images: images,
+        title : title,
+         price:price, 
+         rating: rating, 
+    });
+  }
 //   useEffect(() => {
 //     console.log(clickedIDs);
 //   }, [clickedIDs]);
@@ -65,6 +78,7 @@ const AllProducts = () => {
                     <button
                       id={id}
                       onClick={(e) => {
+                        handleWishlist( id, images, title, price, rating )
                         // if (!clickedIDs.includes(e.currentTarget.id)) {
                         // setClickedIDs([...clickedIDs, e.currentTarget.id]);
                         // }
