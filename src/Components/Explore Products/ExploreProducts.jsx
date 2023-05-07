@@ -7,7 +7,15 @@ import heart from "../../assets/icons/Fill Heart.svg";
 import deleteIcon from "../../assets/icons/Frame 568.svg";
 import { v4 as uuidv4 } from "uuid";
 import { doc, setDoc } from "firebase/firestore";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  Firestore,
+  where,
+  query,
+  getDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import { db, auth } from "../../Data/firebase";
 const AllProducts = () => {
   const [productsData, setProductsData] = useState([]);
@@ -58,6 +66,24 @@ const AllProducts = () => {
       rating: rating,
     });
   };
+  const deleteWishlist = async (id)=>{
+    console.log(id);
+    const docRef = (db, "WishList", `Product ${id}`);
+console.log(docRef);
+    const docSnap = await getDoc(doc(db, "WishList", `Product ${id}`));
+    try {
+      if (docSnap.exists()) {
+        await deleteDoc(
+          (doc(db, "WishList", `Product ${id}`))
+          ,
+          where("uid", "==", auth.currentUser.uid)
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
   //   useEffect(() => {
   //     console.log(clickedIDs);
   //   }, [clickedIDs]);
@@ -102,9 +128,11 @@ const AllProducts = () => {
                       <button
                         id={id}
                         onClick={(e) => {
-                          handleWishlist(id, images, title, price, rating);
                           e.stopPropagation();
                           e.preventDefault();
+                          setInWishlist(false)
+                          deleteWishlist(id);
+
                         }}
                       >
                         <img
@@ -123,6 +151,8 @@ const AllProducts = () => {
                           addToWishlist(id, images, title, price, rating);
                           e.stopPropagation();
                           e.preventDefault();
+                          setInWishlist(true)
+
                         }}
                       >
                         <img className="wishlist-icon" src={heart} alt="" />
