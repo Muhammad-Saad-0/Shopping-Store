@@ -14,7 +14,7 @@
 }
 .single-product .details{
   margin-left: 5vw;
-  
+  width: 30rem;
 }
 .single-product .details .details-top{
   display: flex;
@@ -30,6 +30,7 @@
 }
 .single-product .details .details-top p:nth-child(4){
  padding-top: .5rem;
+line-break: strict;
 }
 .single-product .details .details-top .ratings{
  display: flex;
@@ -38,8 +39,64 @@
  padding-left: 1rem;
 
 }
+.details-top{
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #c2c2c2;
+}
+.counter{
+  border: 2px solid #c2c2c2;
+  display: flex;
+  width: min-content;
+  font-size: 1.5rem;
+  border-radius: .3rem;
+  justify-content: center;
+  align-items: center;
+}
+.counter p{
+width: 5rem;
+text-align: center;
+}
+.counter button {
+  padding: .7rem;
+font-size: 1.5rem;
+}
+.counter button:nth-child(3){
+  background-color: #db4444;
+ color: #ffffff;
+}
+.counter button:nth-child(1){
+  background-color: #ffffff;
+ color: #727272;
+border-right: 2px solid #c2c2c2;
+border-top-left-radius: .3rem;
+border-bottom-left-radius: .3rem;
 
-
+}
+.details-bottom{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.details-bottom button:nth-child(2){
+ background-color: #db4444;
+ padding: .7rem;
+ width: 12rem;
+ font-size: 1.1rem;
+ border-radius: .3rem;
+}
+.details-bottom .wishlist{
+background: none;
+border: 2px solid #c2c2c2;
+border-radius: .3rem;
+position: relative;
+height: 3rem;
+width: 3rem;
+}
+.details-bottom .wishlist img{
+height: 2.7rem;
+position: absolute;
+}
 /**********Loader********/
 .loader {
     width: 60px;

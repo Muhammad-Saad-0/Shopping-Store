@@ -97,7 +97,7 @@ const ProductCard = ({ id, images, title, price, rating }) => {
   },[])
   return (
     <>
-      <Link id={id} key={id} to={`products/product/${id}`}>
+      <Link id={id} key={id} to={`/products/product/${id}`}>
         <div className="image-section">
           <img src={images[3] ? images[3] : images[0]} alt={title} />
           {inWishlist ? (
