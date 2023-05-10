@@ -4,7 +4,12 @@ import "../styles/Products/Products.css";
 import { Link } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db, auth } from "../Data/firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs ,deleteDoc,onSnapshot} from "firebase/firestore";
+import Footer from '../Components/Footer/Footer'
+import ProductCard from "../Components/ProductsCard/ProductCard";
+import deleteIcon from "../assets/icons/Frame 568.svg";
+import { v4 as uuidv4 } from "uuid";
+
 const WishList = () => {
   const [productsData, setProductsData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,16 +25,19 @@ const WishList = () => {
         );
 
         const fetchProducts = async () => {
-          const ProductsDB = await getDocs(q);
-         ProductsDB.forEach((product)=>{
-            setProductsData((prod)=>[...prod,{
-                Id: product.data().productId ,
-                 images: product.data().images,
-                  title : product.data().title,
-                   price:product.data().price, 
-                   rating: product.data().rating,
-            }])
-         })
+
+    onSnapshot(q, (snapshot) => {
+      const newData = snapshot.docs.map((doc)=>{
+        return {
+            Id: doc.data().productId ,
+             images: doc.data().images,
+              title : doc.data().title,
+               price:doc.data().price, 
+               rating: doc.data().rating,
+        }
+      })
+      setProductsData(newData)
+          });
         setLoading(false)
         };
         // setTimeout(()=>{
@@ -66,6 +74,22 @@ const WishList = () => {
   const loadMore = () => {
     setLimit((prev) => prev + 25);
   };
+  const deleteWishlist = async (Id) => {
+    console.log(Id);
+    const docRef = (db, "WishList", `Product ${Id}`);
+    console.log(docRef);
+    const docSnap = await getDoc(doc(db, "WishList", `Product ${Id}`));
+    try {
+      if (docSnap.exists()) {
+        await deleteDoc(
+          doc(db, "WishList", `Product ${Id}`),
+          where("uid", "==", auth.currentUser.uid)
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       {loading ? (
@@ -76,10 +100,26 @@ const WishList = () => {
             <h3>WishList</h3>
           </div>
           <div className="products-grid">
-            {productsData.map(({ id, images, title, price, rating }) => {
+            {productsData.map(({ Id, images, title, price, rating }) => {
+        
               return (
-                <Link to={`product/${id}`} key={id}>
-                  <img src={images[3] ? images[3] : images[0]} alt={title} />
+                <Link to={`product/${Id}`} key={uuidv4()}>
+                  <div className="image-section">
+          <img src={images[3] ? images[3] : images[0]} alt={title} />
+         
+            <button
+              id={Id}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                deleteWishlist(Id);
+              }}
+            >
+              <img className="wishlist-icon" src={deleteIcon} alt="" />
+            </button>
+         
+          
+        </div>
                   <span className="products-info-container">
                     <p>
                       {title.length > 19 ? `${title.slice(0, 19)}...` : title}
@@ -89,7 +129,7 @@ const WishList = () => {
                       <div className="ratings">
                         {[1, 2, 3, 4, 5].map((r) => {
                           return (
-                            <span>
+                            <span key={uuidv4()}>
                               {r <= Math.round(rating) ? (
                                 <AiFillStar style={{ color: "#FFDF00" }} />
                               ) : (
@@ -103,6 +143,7 @@ const WishList = () => {
                     </span>
                   </span>
                 </Link>
+                // <ProductCard id={id} images={images} title={title} price={price} rating={rating}/>
               );
             })}
           </div>
@@ -111,6 +152,10 @@ const WishList = () => {
           </div>
         </section>
       )}
+      <section className="about-footer">
+      <Footer />
+
+      </section>
     </>
   );
 };

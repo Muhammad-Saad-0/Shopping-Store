@@ -84,7 +84,14 @@ border-bottom-left-radius: .3rem;
  width: 12rem;
  font-size: 1.1rem;
  border-radius: .3rem;
+ cursor: pointer;
 }
+.details-bottom button:nth-child(2):hover{
+ background-color: #db4444ea;
+}
+.details-bottom button:nth-child(2):active{
+  background-color: #db4444bb;
+ }
 .details-bottom .wishlist{
 background: none;
 border: 2px solid #c2c2c2;
@@ -92,6 +99,7 @@ border-radius: .3rem;
 position: relative;
 height: 3rem;
 width: 3rem;
+cursor: pointer;
 }
 .details-bottom .wishlist img{
 height: 2.7rem;

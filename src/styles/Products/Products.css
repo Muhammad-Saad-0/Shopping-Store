@@ -131,6 +131,11 @@
   display: flex;
   align-items: flex-start;
 }
+.about-footer {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(120%);
+}
 /****Loader*****/
 
 .loader {
