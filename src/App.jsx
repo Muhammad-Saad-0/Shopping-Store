@@ -10,7 +10,7 @@ import Contact from './Pages/Contact';
 import SignUp from './Pages/SignUp';
 import LogIn from './Pages/LogIn';
 import WishList from './Pages/WishList';
-
+import Cart from './Pages/Cart';
 const App = () => {
 
   return (
@@ -27,6 +27,7 @@ const App = () => {
       <Route path='/signup' element={<SignUp />} />
       <Route path='/login' element={<LogIn />} />
       <Route path='/wishlist' element={<WishList />} />
+      <Route path='/cart' element={<Cart />} />
     </Routes>
   </>
   )

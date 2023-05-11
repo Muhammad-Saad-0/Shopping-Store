@@ -103,7 +103,7 @@ const WishList = () => {
             {productsData.map(({ Id, images, title, price, rating }) => {
         
               return (
-                <Link to={`product/${Id}`} key={uuidv4()}>
+                <Link to={`/products/product/${Id}`} key={uuidv4()}>
                   <div className="image-section">
           <img src={images[3] ? images[3] : images[0]} alt={title} />
          
@@ -153,7 +153,7 @@ const WishList = () => {
         </section>
       )}
       <section className="about-footer">
-      <Footer />
+      {/* <Footer /> */}
 
       </section>
     </>

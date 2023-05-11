@@ -28,9 +28,9 @@ const NavBar = () => {
         <SearchBar />
         <ul>
           <li>
-            <a href="#">
+            <Link to="/cart">
               <img src={Cart1} alt="cart" />
-            </a>
+            </Link>
           </li>
           <li>
             <Link to="/wishlist">

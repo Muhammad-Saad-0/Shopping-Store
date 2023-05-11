@@ -14,7 +14,8 @@ const SingleProduct = () => {
   const [loading, setLoading] = useState(true);
   const { productId } = useParams();
   const [inWishlist, setInWishlist] = useState(false);
-  const [count, setCount] = useState(0);
+  const [inCart, setInCart] = useState(false);
+  const [count, setCount] = useState(1);
   const fetchProducts = () => {
     fetch(`https://dummyjson.com/products/${productId}`)
       .then((response) => {
@@ -23,7 +24,7 @@ const SingleProduct = () => {
       .then((data) => {
         // console.log([data]);
         setProductsData([data]);
-        setLoading(false);
+        // setLoading(false);
       });
   };
   useEffect(() => {
@@ -34,7 +35,7 @@ const SingleProduct = () => {
   };
   const decrease = () => {
     setCount((prevCount) => {
-      if (prevCount <= 0) return 0;
+      if (prevCount <= 1) return 1;
       return prevCount - 1;
     });
   };
@@ -76,8 +77,26 @@ const SingleProduct = () => {
       console.log(error);
     }
   };
-  useEffect(() => {
-    checkWishlist();
+  const checkCart = async () => {
+    // const docRef = (db, "WishList", `Product ${id}`);
+
+    const docSnap = await getDoc(doc(db, "Cart", `Product ${productId}`));
+    try {
+      if (docSnap.exists()) {
+        setInCart(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect( () => {
+  const  checking = async ()=>{
+      await checkCart()
+      await checkWishlist();
+      setLoading(false);
+    }
+  checking()
+
   }, []);
   const AddtoCart = async (id, images, title, price, rating) => {
     await setDoc(doc(db, "Cart", `Product ${productId}`), {
@@ -87,6 +106,7 @@ const SingleProduct = () => {
       title: title,
       price: price,
       rating: rating,
+      quantity: count,
     });
   };
   return (
@@ -140,19 +160,38 @@ const SingleProduct = () => {
                         <AiOutlinePlus />
                       </button>
                     </div>
-                    <button
-                      onClick={() => {
-                        AddtoCart(
-                          product.id,
-                          product.images,
-                          product.title,
-                          product.price,
-                          product.rating
-                        );
-                      }}
-                    >
-                      Add to Cart
-                    </button>
+                    {inCart ? (
+                      <button
+                        onClick={() => {
+                          AddtoCart(
+                            product.id,
+                            product.images,
+                            product.title,
+                            product.price,
+                            product.rating
+                          );
+                          setInCart(false);
+                        }}
+                      >
+                        Remove
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          AddtoCart(
+                            product.id,
+                            product.images,
+                            product.title,
+                            product.price,
+                            product.rating
+                          );
+                          setInCart(true);
+                        }}
+                      >
+                        Add to Cart
+                      </button>
+                    )}
+
                     {inWishlist ? (
                       <button
                         className="wishlist"
