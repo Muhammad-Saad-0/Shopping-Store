@@ -5,12 +5,18 @@ import { AiFillStar } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
 import { AiOutlineMinus } from "react-icons/ai";
 import heart from "../assets/icons/Fill Heart.svg";
-import { doc, setDoc } from "firebase/firestore";
-import { where, getDoc, deleteDoc } from "firebase/firestore";
+import { doc, setDoc ,updateDoc, increment, } from "firebase/firestore";
+import {
+  collection,
+   where, getDoc, deleteDoc ,
+  onSnapshot,
+  query,
+} from "firebase/firestore";
 import { db, auth } from "../Data/firebase";
 import deleteIcon from "../assets/icons/Frame 568.svg";
 const SingleProduct = () => {
   const [productsData, setProductsData] = useState([]);
+  // const [quantity, setQuantity] = useState('');
   const [loading, setLoading] = useState(true);
   const { productId } = useParams();
   const [inWishlist, setInWishlist] = useState(false);
@@ -30,8 +36,14 @@ const SingleProduct = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
-  const increase = () => {
+  const increase = async () => {
     setCount(count + 1);
+    // await updateDoc(
+    //   doc(db, "Cart", `Product ${productId}`),
+    //   {
+    //     quantity: increment(1),
+    //   }
+    // );
   };
   const decrease = () => {
     setCount((prevCount) => {
@@ -98,6 +110,7 @@ const SingleProduct = () => {
   checking()
 
   }, []);
+
   const AddtoCart = async (id, images, title, price, rating) => {
     await setDoc(doc(db, "Cart", `Product ${productId}`), {
       uid: auth.currentUser.uid,
@@ -108,6 +121,21 @@ const SingleProduct = () => {
       rating: rating,
       quantity: count,
     });
+  };
+  const deleteCart = async () => {
+    const docRef = (db, "Cart", `Product ${productId}`);
+    console.log(docRef);
+    const docSnap = await getDoc(doc(db, "Cart", `Product ${productId}`));
+    try {
+      if (docSnap.exists()) {
+        await deleteDoc(
+          doc(db, "Cart", `Product ${productId}`),
+          where("uid", "==", auth.currentUser.uid)
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
@@ -163,13 +191,7 @@ const SingleProduct = () => {
                     {inCart ? (
                       <button
                         onClick={() => {
-                          AddtoCart(
-                            product.id,
-                            product.images,
-                            product.title,
-                            product.price,
-                            product.rating
-                          );
+                          deleteCart()
                           setInCart(false);
                         }}
                       >
