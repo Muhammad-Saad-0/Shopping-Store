@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db, auth } from "../Data/firebase";
 import { AiOutlineDown } from "react-icons/ai";
+import { v4 as uuidv4 } from "uuid";
 
 import {
   collection,
@@ -15,26 +16,12 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import Footer from "../Components/Footer/Footer";
-import ProductCard from "../Components/ProductsCard/ProductCard";
-import deleteIcon from "../assets/icons/Frame 568.svg";
-import { v4 as uuidv4 } from "uuid";
 import CartCard from "../Components/CartCard/CartCard";
 
 const Cart = () => {
   const [productsData, setProductsData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [limit, setLimit] = useState(25);
-  const [count, setCount] = useState(1);
-
-  const increase = () => {
-    setCount(count + 1);
-  };
-  const decrease = () => {
-    setCount((prevCount) => {
-      if (prevCount <= 1) return 1;
-      return prevCount - 1;
-    });
-  };
+  const [total, setTotal] = useState("");
   useEffect(() => {
     auth.onAuthStateChanged(function (user) {
       if (user) {
@@ -66,6 +53,7 @@ const Cart = () => {
     });
   }, []);
 
+
   const deleteCart = async (Id) => {
     console.log(Id);
     const docRef = (db, "Cart", `Product ${Id}`);
@@ -82,6 +70,12 @@ const Cart = () => {
       console.log(error);
     }
   };
+  const CallBack = (childData) =>{
+    
+      setTotal(childData)
+
+    // console.log(total);
+  }
   return (
     <>
       {loading ? (
@@ -95,33 +89,43 @@ const Cart = () => {
             <span>Subtotal</span>
           </div>
           <section className="product-section">
-            {productsData.map(({Id, images, title, price, rating ,quantity}) => {
-              
-              return (
-                // <div className="product-details">
-                //   <span>
-                //     <img src={product.images[0]} alt="" />
-                //     <p>{product.title}</p>
-                //   </span>
-                //   <p>{product.price}</p>
-                
-                //   <div className="counter">
-                //       <button onClick={decrease}>
-                //         <AiOutlineDown />
-                //       </button>
-                //       <p className="count">{count}</p>
+            {productsData.map(
+              ({ Id, images, title, price, rating, quantity }) => {
+                return (
+                  // <div className="product-details">
+                  //   <span>
+                  //     <img src={product.images[0]} alt="" />
+                  //     <p>{product.title}</p>
+                  //   </span>
+                  //   <p>{product.price}</p>
 
-                //       <button onClick={increase}>
-                //         {" "}
-                //         <AiOutlineDown />
-                //       </button>
-                //     </div>
+                  //   <div className="counter">
+                  //       <button onClick={decrease}>
+                  //         <AiOutlineDown />
+                  //       </button>
+                  //       <p className="count">{count}</p>
 
-                //   <p>{product.quantity * product.price}</p>
-                // </div>
-                <CartCard  id={Id} images={images} title={title} price={price} rating={rating} quantity={quantity}/>
-              );
-            })}
+                  //       <button onClick={increase}>
+                  //         {" "}
+                  //         <AiOutlineDown />
+                  //       </button>
+                  //     </div>
+
+                  //   <p>{product.quantity * product.price}</p>
+                  // </div>
+                  <CartCard
+                  key={uuidv4()}
+                    id={Id}
+                    images={images}
+                    title={title}
+                    price={price}
+                    rating={rating}
+                    quantity={quantity}
+                    handleCallBack={CallBack}
+                  />
+                );
+              }
+            )}
           </section>
           {/* <section className="cart-page-buttons-container">
             <button>Return To Shop</button>
@@ -132,7 +136,7 @@ const Cart = () => {
               <p>Cart Total</p>
               <span>
                 <p>Subtotal:</p>
-                <p>$1750</p>
+                <p>${total}</p>
               </span>
               <span>
                 <p>Shipping:</p>
@@ -140,7 +144,7 @@ const Cart = () => {
               </span>
               <span>
                 <p>Total:</p>
-                <p>$1750</p>
+                <p>${total}</p>
               </span>
               <div>
                 <button>Proceed to Checkout</button>
@@ -149,10 +153,11 @@ const Cart = () => {
           </section>
         </section>
       )}
-      {!loading &&
-      <section className="cart-footer"><Footer /></section>
-      
-      }
+      {!loading && (
+        <section className="cart-footer">
+          <Footer />
+        </section>
+      )}
     </>
   );
 };
