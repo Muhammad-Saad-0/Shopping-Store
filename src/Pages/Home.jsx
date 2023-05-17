@@ -7,7 +7,10 @@ import Sale from "../Components/Sale/Sale";
 import AllProducts from "../Components/Explore Products/ExploreProducts";
 import Services from "../Components/Services/Services";
 import Footer from "../Components/Footer/Footer";
+import { auth } from "../Data/firebase";
+
 const Hero = () => {
+
   return (
     <>
       <Slider />

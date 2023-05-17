@@ -2,11 +2,10 @@ import React, { useEffect, useState, useRef } from "react";
 import { AiFillStar } from "react-icons/ai";
 import "../styles/cart/cart.css";
 import { Link } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc  ,} from "firebase/firestore";
 import { db, auth } from "../Data/firebase";
 import { AiOutlineDown } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
-
 import {
   collection,
   query,
@@ -17,11 +16,13 @@ import {
 } from "firebase/firestore";
 import Footer from "../Components/Footer/Footer";
 import CartCard from "../Components/CartCard/CartCard";
-
 const Cart = () => {
   const [productsData, setProductsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState("");
+  const [Q, setQ] = useState({});
+
+
   useEffect(() => {
     auth.onAuthStateChanged(function (user) {
       if (user) {
@@ -53,7 +54,6 @@ const Cart = () => {
     });
   }, []);
 
-
   const deleteCart = async (Id) => {
     console.log(Id);
     const docRef = (db, "Cart", `Product ${Id}`);
@@ -70,12 +70,11 @@ const Cart = () => {
       console.log(error);
     }
   };
-  const CallBack = (childData) =>{
-    
-      setTotal(childData)
+  const CallBack = (childData) => {
+    setTotal(childData);
 
     // console.log(total);
-  }
+  };
   return (
     <>
       {loading ? (
@@ -114,7 +113,7 @@ const Cart = () => {
                   //   <p>{product.quantity * product.price}</p>
                   // </div>
                   <CartCard
-                  key={uuidv4()}
+                    key={uuidv4()}
                     id={Id}
                     images={images}
                     title={title}
@@ -147,7 +146,9 @@ const Cart = () => {
                 <p>${total}</p>
               </span>
               <div>
-                <button>Proceed to Checkout</button>
+              <button>
+                Proceed to Checkout
+              </button>
               </div>
             </div>
           </section>
