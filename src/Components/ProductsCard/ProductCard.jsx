@@ -16,7 +16,10 @@ import {
 } from "firebase/firestore";
 import { db, auth } from "../../Data/firebase";
 import deleteIcon from "../../assets/icons/Frame 568.svg";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 const ProductCard = ({ id, images, title, price, rating }) => {
+  
   const [inWishlist, setInWishlist] = useState(false);
   // const fetchProducts = () => {
   //   fetch("https://dummyjson.com/products")
@@ -78,26 +81,59 @@ const ProductCard = ({ id, images, title, price, rating }) => {
     }
   };
 
-    const checkWishlist = async () => {
+  useEffect(() => {
+    auth.onAuthStateChanged(function (user) {
+      if (user) {
+        const checkWishlist = async () => {
 
-      // const docRef = (db, "WishList", `Product ${id}`);
-  
-      const docSnap = await getDoc(doc(db, "WishList", `Product ${id}`));
-      try {
-        if (docSnap.exists()) {
-        setInWishlist(true)
-        }
-      } catch (error) {
-        console.log(error);
+          // const docRef = (db, "WishList", `Product ${id}`);
+      
+          const docSnap = await getDoc(doc(db, "WishList", `Product ${id}`));
+          console.log(docSnap.data());
+          try {
+            if (docSnap.exists() && docSnap.data().uid === auth.currentUser.uid) {
+            setInWishlist(true)
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        };
+        // setTimeout(()=>{
+          checkWishlist()
+
+        // },500)
+      } else {
+        return false;
       }
-    };
-  useEffect(()=>{
-
-    checkWishlist()
-  },[])
+    });
+  }, []);
+  const notifyAdded = () => toast.success(' Added to Wishlist!', {
+    position: "bottom-right",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    });
+  const notifyDel = () => toast.error(' Removed from Wishlist!', {
+    position: "bottom-right",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    });
+   
   return (
     <>
+       
+
       <Link id={id} key={id} to={`/products/product/${id}`}>
+   
         <div className="image-section">
           <img src={images[3] ? images[3] : images[0]} alt={title} />
           {inWishlist ? (
@@ -108,6 +144,8 @@ const ProductCard = ({ id, images, title, price, rating }) => {
                 e.preventDefault();
                 setInWishlist(false);
                 deleteWishlist(id);
+                notifyDel()
+
               }}
             >
               <img className="wishlist-icon" src={deleteIcon} alt="" />
@@ -120,11 +158,14 @@ const ProductCard = ({ id, images, title, price, rating }) => {
                 e.stopPropagation();
                 e.preventDefault();
                 setInWishlist(true);
+                notifyAdded()
               }}
             >
               <img className="wishlist-icon" src={heart} alt="" />
             </button>
+            
           )}
+          
         </div>
 
         <span className="products-info-container">

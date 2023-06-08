@@ -5,15 +5,18 @@ import { AiFillStar } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
 import { AiOutlineMinus } from "react-icons/ai";
 import heart from "../assets/icons/Fill Heart.svg";
-import { doc, setDoc ,updateDoc, increment, } from "firebase/firestore";
+import { doc, setDoc, updateDoc, increment } from "firebase/firestore";
 import {
   collection,
-   where, getDoc, deleteDoc ,
+  where,
+  getDoc,
+  deleteDoc,
   onSnapshot,
   query,
 } from "firebase/firestore";
 import { db, auth } from "../Data/firebase";
 import deleteIcon from "../assets/icons/Frame 568.svg";
+import { toast } from "react-toastify";
 const SingleProduct = () => {
   const [productsData, setProductsData] = useState([]);
   // const [quantity, setQuantity] = useState('');
@@ -101,14 +104,13 @@ const SingleProduct = () => {
       console.log(error);
     }
   };
-  useEffect( () => {
-  const  checking = async ()=>{
-      await checkCart()
+  useEffect(() => {
+    const checking = async () => {
+      await checkCart();
       await checkWishlist();
       setLoading(false);
-    }
-  checking()
-
+    };
+    checking();
   }, []);
 
   const AddtoCart = async (id, images, title, price, rating) => {
@@ -137,6 +139,28 @@ const SingleProduct = () => {
       console.log(error);
     }
   };
+  const notifyAdded = () =>
+    toast.success(" Added to Cart!", {
+      position: "bottom-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  const notifyDel = () =>
+    toast.error(" Removed from Cart!", {
+      position: "bottom-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   return (
     <>
       {loading ? (
@@ -177,28 +201,34 @@ const SingleProduct = () => {
                     <p>{product.description}</p>
                   </div>
                   <div className="details-bottom">
-                    <div className="counter">
-                      <button onClick={decrease}>
-                        <AiOutlineMinus />
-                      </button>
-                      <p className="count">{count}</p>
+                    {!inCart ? (
+                      <div className="counter">
+                        <button onClick={decrease}>
+                          <AiOutlineMinus />
+                        </button>
+                        <p className="count">{count}</p>
 
-                      <button onClick={increase}>
-                        {" "}
-                        <AiOutlinePlus />
-                      </button>
-                    </div>
+                        <button onClick={increase}>
+                          {" "}
+                          <AiOutlinePlus />
+                        </button>
+                      </div>
+                    ) : (
+                      false
+                    )}
+
                     {inCart ? (
-                      <button
+                      <button className="cartBtn"
                         onClick={() => {
-                          deleteCart()
+                          deleteCart();
                           setInCart(false);
+                          notifyDel();
                         }}
                       >
                         Remove
                       </button>
                     ) : (
-                      <button
+                      <button className="cartBtn"
                         onClick={() => {
                           AddtoCart(
                             product.id,
@@ -208,6 +238,7 @@ const SingleProduct = () => {
                             product.rating
                           );
                           setInCart(true);
+                          notifyAdded();
                         }}
                       >
                         Add to Cart

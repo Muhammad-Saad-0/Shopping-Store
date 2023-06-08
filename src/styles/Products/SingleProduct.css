@@ -78,7 +78,7 @@ border-bottom-left-radius: .3rem;
   justify-content: space-between;
   align-items: center;
 }
-.details-bottom button:nth-child(2){
+.details-bottom  .cartBtn{
  background-color: #db4444;
  padding: .7rem;
  width: 12rem;
@@ -86,10 +86,10 @@ border-bottom-left-radius: .3rem;
  border-radius: .3rem;
  cursor: pointer;
 }
-.details-bottom button:nth-child(2):hover{
+.details-bottom .cartBtn:hover{
  background-color: #db4444ea;
 }
-.details-bottom button:nth-child(2):active{
+.details-bottom .cartBtn:active{
   background-color: #db4444bb;
  }
 .details-bottom .wishlist{

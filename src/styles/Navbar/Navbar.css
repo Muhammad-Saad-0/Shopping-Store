@@ -1,19 +1,19 @@
-*{
-    /* border: 1px green solid; */
+* {
+  /* border: 1px green solid; */
 }
-nav{
-    display: flex;
-    /* grid-template-columns: 20% 40% 40%; */
-    padding: 0vw;
-    position: fixed;
-    z-index: 5;
-    background-color: white;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.527) 0px 2px 8px 0px;
-    min-height: 6.7vw;
-    /* gap:calc(16px + 12vw); */
-    justify-content: space-between;
-    top: 0;
+nav {
+  display: flex;
+  /* grid-template-columns: 20% 40% 40%; */
+  padding: 0vw;
+  position: fixed;
+  z-index: 5;
+  background-color: white;
+  width: 100%;
+  box-shadow: rgba(99, 99, 99, 0.527) 0px 2px 8px 0px;
+  min-height: 6.7vw;
+  /* gap:calc(16px + 12vw); */
+  justify-content: space-between;
+  top: 0;
 }
 /* @media (max-width: 960px) {
     nav{
@@ -25,110 +25,109 @@ nav{
     grid-template-columns: 15% 30% 55%;
     }
 } */
-nav h1{
-    padding: 2vw;
-    padding-left: 3vw;
+nav h1 {
+  padding: 2vw;
+  padding-left: 3vw;
 }
-nav .nav-left{
-    display: flex;
-    align-items: center;
-    gap: 3vw;
-    justify-content: center;
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+  justify-content: center;
 }
-nav .nav-left ul{
-    display: flex;
+nav .nav-left ul {
+  display: flex;
 }
-nav .nav-left ul li{
-    list-style: none;
-    padding: 1vw;
+nav .nav-left ul li {
+  list-style: none;
+  padding: 1vw;
 }
 nav .nav-left ul li a {
-    text-decoration: none;
-    color: black;
-    font-size: calc(8px + .7vw);
+  text-decoration: none;
+  color: black;
+  font-size: calc(8px + 0.7vw);
 }
-nav .nav-right{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+nav .nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-nav .nav-right ul{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-right: 1rem;
+nav .nav-right ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 1rem;
 }
-nav .nav-right ul li{
- list-style: none;
- padding: .3rem;
+nav .nav-right ul li {
+  list-style: none;
+  padding: 0.3rem;
 }
-nav .nav-right ul li a img{
-    height:1.6rem;
+nav .nav-right ul li a img {
+  height: 1.6rem;
 }
-
 
 /******Search Bar*********/
 
 form {
-    display:flex;
-    flex-direction:row;
-    border:none;
-    padding:1px;
+  display: flex;
+  flex-direction: row;
+  border: none;
+  padding: 1px;
+}
+
+input {
+  flex-grow: 2;
+  border: none;
+  background-color: #f5f5f5;
+  text-indent: 1vw;
+  min-width: calc(16px + 15rem);
+}
+input:focus {
+  outline: none;
+}
+form:focus-within {
+  outline: 1px solid rgb(0, 0, 0);
+}
+
+button {
+  background: none;
+  border: none;
+  color: white;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5vw;
+}
+
+/*Cart count*/
+.cart {
+  position: relative;
+  display: block;
+  width: 28px;
+  height: 28px;
+  height: auto;
+  overflow: hidden;}
+  .icons {
+    position: relative;
+    top: 4px;
+    z-index: 1;
+    font-size: 24px;
+    color: white;
   }
-  
-  input {
-    flex-grow:2;
-    border:none;
-    background-color: #F5F5F5;
-    text-indent: 1vw;
-    min-width: calc(16px + 15rem) ;
-  }
-  input:focus {
-    outline: none;
-  }
-  form:focus-within { 
-    outline: 1px solid rgb(0, 0, 0) 
-  }
-  
-  button {
-    background:none;
-    border: none;
-    color:white;
-    background-color: #F5F5F5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: .5vw;
+  .cart .count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    font-size: 11px;
+    border-radius: 50%;
+    background: #db4444;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    display: block;
+    text-align: center;
+    color: white;
   }
 
-  /*Cart count*/
-  .cart {
-    position: relative;
-    display: block;
-    width: 28px;
-    height: 28px;
-    height: auto;
-    overflow: hidden;
-    .icons {
-      position: relative;
-      top: 4px;
-      z-index: 1;
-      font-size: 24px;
-      color: white;
-    }
-    .count {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 2;
-      font-size: 11px;
-      border-radius: 50%;
-      background: #db4444;
-      width: 16px;
-      height: 16px;
-      line-height:16px;
-      display: block;
-      text-align: center;
-      color: white;
-    }
-  }

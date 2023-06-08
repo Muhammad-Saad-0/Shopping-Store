@@ -110,6 +110,18 @@ transform: rotate(180deg);
 .product-details span{
     display: flex;
     align-items: center;
+    position: relative;
+    
+}
+.product-details span button{
+    background: none;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+}
+.product-details span button svg{
+    color: #db4444;
+    font-size: 1.5rem;
 }
 .product-details img{
     height: 2.5rem;

@@ -75,6 +75,7 @@ const Cart = () => {
 
     // console.log(total);
   };
+  console.log(productsData);
   return (
     <>
       {loading ? (
@@ -135,7 +136,13 @@ const Cart = () => {
               <p>Cart Total</p>
               <span>
                 <p>Subtotal:</p>
-                <p>${total}</p>
+                {productsData.length == 0?<p>
+                  $0   
+                </p>:<p>
+                ${total}
+                  </p>}
+                {/* <p>${productsData&&total}</p> */}
+                {/* <p>${total?total:0}</p> */}
               </span>
               <span>
                 <p>Shipping:</p>
@@ -143,7 +150,11 @@ const Cart = () => {
               </span>
               <span>
                 <p>Total:</p>
-                <p>${total}</p>
+                {productsData.length == 0?<p>
+                  $0   
+                </p>:<p>
+                ${total}
+                  </p>}
               </span>
               <div>
               <button>

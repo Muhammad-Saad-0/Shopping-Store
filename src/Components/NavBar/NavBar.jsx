@@ -13,7 +13,7 @@ import {
   getCountFromServer,
   onSnapshot,
 } from "firebase/firestore";
-
+// import { ToastContainer} from 'react-toastify';
 const NavBar = () => {
   const [cartCount, setCartCount] = useState(0);
   const [WLCount, setWLCount] = useState(0);
@@ -46,6 +46,18 @@ const NavBar = () => {
 
   return (
     <nav>
+          {/* <ToastContainer
+position="bottom-right"
+autoClose={1500}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+/> */}
       <Link to="/" style={{ color: "black", textDecoration: "none" }}>
         <h1>Exclusive</h1>
       </Link>
@@ -70,13 +82,13 @@ const NavBar = () => {
         <ul>
           <li className="cart">
             <Link to="/cart">
-              <span class="count">{cartCount}</span>
+              <span className="count">{cartCount}</span>
               <img className="icons" src={Cart1} alt="cart" />
             </Link>
           </li>
           <li className="cart">
             <Link to="/wishlist">
-            <span class="count">{WLCount}</span>
+            <span className="count">{WLCount}</span>
               <img className="icons"  src={heartSmall} alt="wishlist" />
             </Link>
           </li>

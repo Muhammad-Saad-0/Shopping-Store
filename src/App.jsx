@@ -11,10 +11,24 @@ import SignUp from './Pages/SignUp';
 import LogIn from './Pages/LogIn';
 import WishList from './Pages/WishList';
 import Cart from './Pages/Cart';
+import { ToastContainer} from 'react-toastify';
 const App = () => {
 
   return (
   <>
+   <ToastContainer
+position="bottom-right"
+autoClose={1500}
+limit={7}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+/>
       <NavBar />
 
    <Routes>

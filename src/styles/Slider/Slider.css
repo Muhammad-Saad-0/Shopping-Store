@@ -7,7 +7,7 @@
   align-items: center;
   position: relative;
   transform: translateY(6.7vw);
-  /* height: 35vw; */
+  height: 35%;
 }
 .react-slideshow-container .nav {
   z-index: 10;
@@ -126,11 +126,13 @@
   overflow: hidden;
 }
 .react-slideshow-wrapper .images-wrap {
+  
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  /* height: 25vw; */
 }
 .react-slideshow-wrapper .images-wrap > div[aria-hidden="true"] {
   display: none;

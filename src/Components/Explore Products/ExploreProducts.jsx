@@ -21,9 +21,9 @@ import ProductCard from "../ProductsCard/ProductCard";
 
 const AllProducts = () => {
   const [productsData, setProductsData] = useState([]);
-  const [inWishlist, setInWishlist] = useState(false);
-  const [clickedIDs, setClickedIDs] = useState([]);
-  const [prodID, setProdID] = useState("");
+  // const [inWishlist, setInWishlist] = useState(false);
+  // const [clickedIDs, setClickedIDs] = useState([]);
+  // const [prodID, setProdID] = useState("");
 
   const fetchProducts = () => {
     fetch("https://dummyjson.com/products")
