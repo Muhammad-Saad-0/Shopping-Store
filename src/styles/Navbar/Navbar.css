@@ -130,4 +130,63 @@ button {
     text-align: center;
     color: white;
   }
+.search-btn{
+  display: none;
+background: none;
+}
+.menu-btn{
+  display: none;
+}
+.mobile-left{
+  display: none;
+}
+/*Resoponsive*/
 
+
+@media only screen and (max-width: 780px) {
+form{
+  display: none;
+}
+.search-btn{
+  display: inline;
+}
+}
+@media only screen and (max-width: 520px) {
+  .logo{
+    display: none;
+  }
+  .mobile-left{
+    display: flex;
+    align-items: center;
+  }
+  .mobile-left a{
+    display: flex;
+    align-items: center;
+  }
+  nav{
+    justify-content: space-between;
+  }
+  nav h1 {
+   font-size: 1.5rem;
+  }
+  .nav-left{
+    display: none !important;
+  }
+  .menu-btn{
+    display: flex;
+    background: none;
+    color: black;
+  }
+  .menu-btn svg{
+   font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 360px) {
+ 
+  nav h1 {
+   font-size: 1.2rem;
+  }
+  .menu-btn svg{
+   font-size: 1.2rem;
+  }
+} 

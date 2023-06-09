@@ -45,3 +45,19 @@
     padding-top: 1vw;
     padding-bottom: .4vw;
 }
+@media only screen and (max-width: 800px) {
+    .services-grid div{
+      text-align: center;
+    }
+    }
+@media only screen and (max-width: 560px) {
+    .services-grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+    }
+@media only screen and (max-width: 480px) {
+    .services-grid{
+        grid-template-columns: repeat(1,1fr);
+        gap: 2rem;
+    }
+    }

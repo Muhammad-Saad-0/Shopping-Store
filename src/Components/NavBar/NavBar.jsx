@@ -4,6 +4,7 @@ import Cart1 from "../../assets/icons/Cart1.svg";
 import heartSmall from "../../assets/icons/heart small.svg";
 import userIcon from "../../assets/icons/user.svg";
 import "../../styles/NavBar/Navbar.css";
+import SearchBtn from "../../assets/icons/SearchBtn.svg";
 import { Link } from "react-router-dom";
 import { db, auth } from "../../Data/firebase";
 import {
@@ -13,6 +14,7 @@ import {
   getCountFromServer,
   onSnapshot,
 } from "firebase/firestore";
+import { AiOutlineMenu } from "react-icons/ai";
 // import { ToastContainer} from 'react-toastify';
 const NavBar = () => {
   const [cartCount, setCartCount] = useState(0);
@@ -46,7 +48,7 @@ const NavBar = () => {
 
   return (
     <nav>
-          {/* <ToastContainer
+      {/* <ToastContainer
 position="bottom-right"
 autoClose={1500}
 hideProgressBar={false}
@@ -58,10 +60,21 @@ draggable
 pauseOnHover
 theme="dark"
 /> */}
-      <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+      <div className="mobile-left">
+        <button className="menu-btn">
+          <AiOutlineMenu />
+        </button>
+        <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+          <h1>Exclusive</h1>
+        </Link>
+      </div>
+      <Link
+        className="logo"
+        to="/"
+        style={{ color: "black", textDecoration: "none" }}
+      >
         <h1>Exclusive</h1>
       </Link>
-
       <div className="nav-left">
         <ul>
           <li>
@@ -79,6 +92,10 @@ theme="dark"
       </div>
       <div className="nav-right">
         <SearchBar />
+        <button className="search-btn" type="submit">
+          <img src={SearchBtn} alt="search" />
+        </button>
+
         <ul>
           <li className="cart">
             <Link to="/cart">
@@ -88,8 +105,8 @@ theme="dark"
           </li>
           <li className="cart">
             <Link to="/wishlist">
-            <span className="count">{WLCount}</span>
-              <img className="icons"  src={heartSmall} alt="wishlist" />
+              <span className="count">{WLCount}</span>
+              <img className="icons" src={heartSmall} alt="wishlist" />
             </Link>
           </li>
           <li>
