@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import Cart1 from "../../assets/icons/Cart1.svg";
 import heartSmall from "../../assets/icons/heart small.svg";
 import userIcon from "../../assets/icons/user.svg";
-// import "../../styles/NavBar/Navbar.css";
+import "../../styles/Navbar/Navbar.css";
 import SearchBtn from "../../assets/icons/SearchBtn.svg";
 import { Link } from "react-router-dom";
 import { db, auth } from "../../Data/firebase";
