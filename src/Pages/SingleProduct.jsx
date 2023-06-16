@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 import "../styles/Products/SingleProduct.css";
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
+import {useNavigate} from "react-router-dom";
+
 import { AiOutlineMinus } from "react-icons/ai";
 import heart from "../assets/icons/Fill Heart.svg";
 import { doc, setDoc, updateDoc, increment } from "firebase/firestore";
@@ -25,6 +27,8 @@ const SingleProduct = () => {
   const [inWishlist, setInWishlist] = useState(false);
   const [inCart, setInCart] = useState(false);
   const [count, setCount] = useState(1);
+  const [signedIn,SetSignedIn] = useState(false)
+  const navigate = useNavigate()
   const fetchProducts = () => {
     fetch(`https://dummyjson.com/products/${productId}`)
       .then((response) => {
@@ -161,6 +165,22 @@ const SingleProduct = () => {
       progress: undefined,
       theme: "dark",
     });
+    const navigateTo = ()=>{
+      if(signedIn){
+        notifyAdded();
+
+      }else{
+        navigate('/signup')
+      }
+         }
+    const navigateTo2 = ()=>{
+      if(signedIn){
+      return false
+
+      }else{
+        navigate('/signup')
+      }
+         }
   return (
     <>
       {loading ? (
@@ -242,7 +262,7 @@ const SingleProduct = () => {
                             product.rating
                           );
                           setInCart(true);
-                          notifyAdded();
+                          navigateTo()
                         }}
                       >
                         Add to Cart
@@ -281,6 +301,7 @@ const SingleProduct = () => {
                           e.stopPropagation();
                           e.preventDefault();
                           setInWishlist(true);
+                          navigateTo2()
                         }}
                       >
                         <img className="wishlist-icon" src={heart} alt="" />

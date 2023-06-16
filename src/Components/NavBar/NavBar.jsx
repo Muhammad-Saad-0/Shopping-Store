@@ -173,13 +173,13 @@ theme="dark"
 
           <ul>
             <li className="cart">
-              <Link to="/cart">
+              <Link to={signedIn?'/cart':'/signup'}>
                 <span className="count">{cartCount}</span>
                 <img className="icons" src={Cart1} alt="cart" />
               </Link>
             </li>
             <li className="cart">
-              <Link to="/wishlist">
+              <Link to={signedIn?'/wishlist':'/signup'}>
                 <span className="count">{WLCount}</span>
                 <img className="icons" src={heartSmall} alt="wishlist" />
               </Link>
