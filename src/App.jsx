@@ -2,7 +2,7 @@ import React from 'react'
 import Home from './Pages/Home'
 import { Route, Routes, useParams } from "react-router";
 import AllProducts from "./Pages/AllProducts";
-import NavBar from "./Components/NavBar/NavBar";
+import NavBar from "./Components/NavBar/NavBar.jsx";
 import SingleCategory from './Pages/SingleCategory';
 import SingleProduct from './Pages/SingleProduct';
 import AboutUs from './Pages/AboutUs';
