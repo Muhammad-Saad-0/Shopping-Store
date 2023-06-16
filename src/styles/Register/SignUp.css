@@ -1,3 +1,6 @@
+*{
+    /* border: 1px solid green; */
+}
 .signin-section{
     display: flex;
     padding-top: 10vw;
@@ -50,3 +53,38 @@
    color: rgb(109, 109, 109);
    cursor: pointer;
 }
+@media only screen and (max-width: 880px) {
+    .signin-section img{
+        display: none;
+    }
+    .signin-section button{
+        background-color:#db4444;
+        padding: 1rem;
+        font-size: 1.2rem;
+        margin-top: 2vw;
+        border-radius: .5vw;
+    }
+    .signin-section{
+        display: flex;
+        padding-top: 14vw;
+        /* padding-right: 25vw; */
+        justify-content: center;
+        align-items: center;
+    }
+    }
+@media only screen and (max-width: 480px) {
+    .signin-right-section>p:nth-child(1){
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .signin-section button{
+        background-color:#db4444;
+        padding: .6rem;
+        font-size: 1rem;
+        margin-top: 2vw;
+        border-radius: 1vw;
+    }
+    .signin-section{
+        padding-top: 14vw;
+    }
+    }
