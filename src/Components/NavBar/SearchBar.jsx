@@ -1,7 +1,7 @@
 
 import React from 'react'
 import SearchBtn from '../../assets/icons/SearchBtn.svg'
-import '../../styles/NavBar/NavBar.css'
+import '../../styles/Navbar/Navbar.css'
 const SearchBar = () => {
   return (
 <>
