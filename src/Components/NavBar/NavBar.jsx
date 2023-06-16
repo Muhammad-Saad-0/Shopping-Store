@@ -17,34 +17,36 @@ import {
 import { AiOutlineMenu } from "react-icons/ai";
 import Sidebar from "../Sidebar/Sidebar";
 import { getAuth, signOut } from "firebase/auth";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 // import { ToastContainer} from 'react-toastify';
 const NavBar = () => {
   const authUser = getAuth();
-  const notifySignOut = () => toast.success('Sign Out successful!', {
-    position: "bottom-right",
-    autoClose: 1500,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
+  const notifySignOut = () =>
+    toast.success("Sign Out successful!", {
+      position: "bottom-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
     });
-  const notifyError = (error) => toast.success(`${error}`, {
-    position: "bottom-right",
-    autoClose: 1500,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
+  const notifyError = (error) =>
+    toast.success(`${error}`, {
+      position: "bottom-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
     });
   const [cartCount, setCartCount] = useState(0);
   const [WLCount, setWLCount] = useState(0);
   const [OpenSidebar, SetOpenSidebar] = useState(false);
-  const [signedIn,SetSignedIn] = useState(false)
+  const [signedIn, SetSignedIn] = useState(false);
   useEffect(() => {
     auth.onAuthStateChanged(function (user) {
       if (user) {
@@ -66,10 +68,10 @@ const NavBar = () => {
         };
         getWLCount();
         getCartCount();
-        SetSignedIn(true)
+        SetSignedIn(true);
       } else {
         SetSignedIn(false);
-return false;
+        return false;
       }
     });
   }, []);
@@ -86,11 +88,7 @@ return false;
     
     />
   } */}
-      <aside
-        className={`${
-          !OpenSidebar && `none` 
-        }`}
-      >
+      <aside className={`${!OpenSidebar && `none`}`}>
         <ul>
           <li
             onClick={() => {
@@ -173,31 +171,46 @@ theme="dark"
 
           <ul>
             <li className="cart">
-              <Link to={signedIn?'/cart':'/signup'}>
+              <Link to={signedIn ? "/cart" : "/signup"}>
                 <span className="count">{cartCount}</span>
                 <img className="icons" src={Cart1} alt="cart" />
               </Link>
             </li>
             <li className="cart">
-              <Link to={signedIn?'/wishlist':'/signup'}>
+              <Link to={signedIn ? "/wishlist" : "/signup"}>
                 <span className="count">{WLCount}</span>
                 <img className="icons" src={heartSmall} alt="wishlist" />
               </Link>
             </li>
             <li>
-              {signedIn?
-              <button onClick={()=>{signOut(auth).then(() => {
-               
-                notifySignOut()
-              }).catch((error) => {
-                notifyError(error)
-
-              });}} style={{color:'red' , border:'1px solid red', borderRadius:'.5vw',background:'none',cursor:'pointer'}}>Sign Out</button>:
-              <Link to="/signup">
-                <img src={userIcon} alt="profile" />
-              </Link>
-              }
-              
+              {signedIn ? (
+                <button
+                  onClick={() => {
+                    signOut(auth)
+                      .then(() => {
+                        notifySignOut();
+                      })
+                      .catch((error) => {
+                        notifyError(error);
+                      });
+                      setCartCount(0)
+                      setWLCount(0)
+                  }}
+                  style={{
+                    color: "red",
+                    border: "1px solid red",
+                    borderRadius: ".5vw",
+                    background: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  Sign Out
+                </button>
+              ) : (
+                <Link to="/signup">
+                  <img src={userIcon} alt="profile" />
+                </Link>
+              )}
             </li>
           </ul>
         </div>
