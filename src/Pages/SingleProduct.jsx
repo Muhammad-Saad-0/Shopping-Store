@@ -29,6 +29,16 @@ const SingleProduct = () => {
   const [count, setCount] = useState(1);
   const [signedIn,SetSignedIn] = useState(false)
   const navigate = useNavigate()
+  useEffect(() => {
+    auth.onAuthStateChanged(function (user) {
+      if (user) {
+        SetSignedIn(true)
+      } else {
+        SetSignedIn(false);
+return false;
+      }
+    });
+  }, []);
   const fetchProducts = () => {
     fetch(`https://dummyjson.com/products/${productId}`)
       .then((response) => {
