@@ -12,6 +12,7 @@ import LogIn from './Pages/LogIn';
 import WishList from './Pages/WishList';
 import Cart from './Pages/Cart';
 import { ToastContainer} from 'react-toastify';
+import "./styles/Navbar/Navbar.css";
 const App = () => {
 
   return (

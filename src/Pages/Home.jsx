@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Navbar/Navbar.css";
+
 import Slider from "../Components/Slider/Slider";
 import Categories from "../Components/Categories/Categories";
 import Sale from "../Components/Sale/Sale";
