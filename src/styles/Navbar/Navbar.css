@@ -140,8 +140,43 @@ background: none;
 .mobile-left{
   display: none;
 }
-/*Resoponsive*/
 
+/*Sidebar*/
+
+aside{
+  background-color: #242424;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  /* align-items: flex-start; */
+  list-style: none;
+  height: 100vh;
+  position: fixed;
+  z-index: 4;
+  text-indent: 1rem;
+  transition: all 300ms ease;
+}
+aside ul{
+  list-style: none;
+  padding-top: 4rem;
+}
+aside ul li a{
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+aside ul li {
+  margin-top: 1rem;
+  border-bottom: 3px rgb(214, 214, 214) solid;
+  width: 90%;
+  transform: translateX(5%);
+  padding-bottom: .5rem;
+}
+.none{
+  transform: translateX(-100%);
+}
+/*Resoponsive*/
 
 @media only screen and (max-width: 780px) {
 form{
@@ -151,7 +186,13 @@ form{
   display: inline;
 }
 }
+@media only screen and (min-width: 520px) {
+  aside{
+    transform: translateX(-100%);
+  }
+}
 @media only screen and (max-width: 520px) {
+  
   .logo{
     display: none;
   }

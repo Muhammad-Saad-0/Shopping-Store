@@ -14,9 +14,9 @@ const AboutUs = () => {
         <img src="https://images.unsplash.com/photo-1682306002010-c4dbcbef02f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80" alt="" />
     </div>
 </div>
-    <section className="about-footer" >
+    {/* <section className="about-footer" > */}
     <Footer />
-    </section>
+    {/* </section> */}
     </>
   )
 }

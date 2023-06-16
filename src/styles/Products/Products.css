@@ -175,6 +175,16 @@
 } 
 
 @media only screen and (max-width: 800px) {
+  .all-products-section{
+  margin-top: 8vw;
+  }
+  .all-products-section .all-btn{
+    width: 25vw;
+    font-size: 1.5vw;
+    padding: 1.2vw;
+    border-radius: .5vw;
+    transform: translateX(25vw);
+  }
   .products-grid{
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
@@ -214,6 +224,13 @@
   }
   }
 @media only screen and (max-width: 600px) {
+  .all-products-section .all-btn{
+    width: 30vw;
+    font-size: 2.5vw;
+    padding: 1.5vw;
+    border-radius: .5vw;
+    transform: translateX(23vw);
+  }
   .products-grid{
     grid-template-columns: repeat(1, 1fr);
     justify-items: center;
@@ -233,7 +250,7 @@
     width: 12rem;
   }
   .products-grid a .products-info-container .products-detail p:nth-child(1) {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     
   }
   .products-grid .products-info-container .products-detail .ratings{
@@ -250,6 +267,13 @@
   }
   }
 @media only screen and (max-width: 400px) {
+  .all-products-section .all-btn{
+    width: 45vw;
+    font-size: 3.5vw;
+    padding: 3vw;
+    border-radius: 1vw;
+    transform: translateX(14vw);
+  }
   .products-grid a .image-section button{
     height: 8vw;
     width: 8vw;

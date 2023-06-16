@@ -177,6 +177,7 @@ const SingleProduct = () => {
                   <div className="details-top">
                     <p>{product.title}</p>
                     <div className="ratings">
+                      <div className="stars-and-rate">
                       {[1, 2, 3, 4, 5].map((r) => {
                         return (
                           <span>
@@ -189,6 +190,8 @@ const SingleProduct = () => {
                         );
                       })}
                       <p>{`(${Math.round(product.rating)})`}</p>
+                      </div>
+                     
                       <p
                         className="stock"
                         style={{ color: product.stock > 0 ? "green" : "red" }}
@@ -216,7 +219,8 @@ const SingleProduct = () => {
                     ) : (
                       false
                     )}
-
+                    
+<div className="details-bottom-flex">
                     {inCart ? (
                       <button className="cartBtn"
                         onClick={() => {
@@ -282,6 +286,7 @@ const SingleProduct = () => {
                         <img className="wishlist-icon" src={heart} alt="" />
                       </button>
                     )}
+                 </div>
                   </div>
                 </div>
               </>

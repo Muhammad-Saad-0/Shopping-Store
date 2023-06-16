@@ -168,11 +168,14 @@ const CartCard = ({
   return (
     <div className="product-details">
       <span>
+       
         <img src={images[0]} alt="" />
+        <span className="product-name-flex">
         <p>{title.length > 12 ? `${title.slice(0, 12)}...` : title}</p>
         <button onClick={()=>{deleteProd(id)}}>
           <ImCancelCircle />
         </button>
+          </span>
       </span>
       <p>${price}</p>
 
